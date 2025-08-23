@@ -1,0 +1,15 @@
+
+#################################################################################
+# Auth for protected endpoints
+
+Eg: /posts etc..
+
+get_current_user is a FastAPI dependency.
+When you hit a protected endpoint, FastAPI calls get_current_user.
+get_current_user gets the JWT token from the request, then calls verify_access_token.
+verify_access_token decodes the token, checks for the user ID, and returns a TokenData object with the ID.
+If the token is invalid or missing the ID, it raises an HTTP 401 error.
+Summary:
+This setup securely extracts and validates the user info from the JWT for each protected request.
+
+#################################################################################

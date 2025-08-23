@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+.venv/
+venv/
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# Alembic
+alembic/versions/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+
+# Migrations
+migrations/
+
+
+# Test and coverage
+htmlcov/
+.coverage
+.pytest_cache/
