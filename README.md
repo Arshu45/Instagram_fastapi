@@ -1,16 +1,14 @@
 
-# 📸 Instagram FastAPI Backend 
+# Instagram FastAPI Backend 
 
 A **social media style application** built using **FastAPI** with **Postgres** + **Docker** for local development, and deployed on **Render** (backend) with **Supabase** (database).  
 
 ---
 
 ## ⚡ Features  
-- 🔐 User authentication with JWT  
-- 📦 Database migrations with Alembic  
-- 🐳 Dockerized development environment  
-- 🚀 Render auto-deployment setup  
-- 🗄️ Supabase (free-tier Postgres) for production database  
+- User authentication with JWT  
+- Database migrations with Alembic  
+- Dockerized development environment   
 
 ---
 
@@ -18,7 +16,7 @@ A **social media style application** built using **FastAPI** with **Postgres** +
 
 ### **1. Clone the repository**
 ```bash
-git clone <repo-link>
+git clone https://github.com/Arshu45/Instagram_fastapi.git
 cd instagram_fastapi
 ````
 
@@ -41,7 +39,7 @@ Use **pgAdmin** or **psql** with these credentials:
 * **Port:** `5433`
 * **Database:** `instagram_fastapi_db`
 * **Username:** `postgres`
-* **Password:** `mltmorpltru`
+* **Password:** `mlt...ru`
 
 ### **4. Verify the app**
 
@@ -50,7 +48,7 @@ Open browser:
 
 ---
 
-## 🔄 Database Migrations (Alembic)
+## Database Migrations (Alembic)
 
 Keep your schema in sync with your models.
 
@@ -66,11 +64,11 @@ docker compose exec fastapi alembic revision --autogenerate -m "your message"
 docker compose exec fastapi alembic upgrade head
 ```
 
-✅ This ensures your local database schema matches your models.
+This ensures your local database schema matches your models.
 
 ---
 
-## 🌍 Production Deployment
+## Production Deployment
 
 ### **Live App:**
 
@@ -186,13 +184,6 @@ docker compose exec fastapi alembic upgrade head
 docker compose down
 ```
 
----
-
-## 👨‍💻 Summary
-
-* **Develop locally** → Docker + Alembic
-* **Run migrations** → keep schema updated
-* **Push to GitHub** → Render redeploys automatically
-* **Production DB** → Supabase (permanent free tier)
+* YT Link : https://www.youtube.com/watch?v=0sOvCWFmrtA
 
 

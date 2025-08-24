@@ -1,3 +1,5 @@
+####################### Python #############################
+
 # # Command to create a virtual environment in MAC
 # python3 -m venv .venv
 
@@ -27,7 +29,7 @@
 # uvicorn main:app --reload
 
 
-## Alembic
+################# Alembic Commands #####################
 
 # Command to initialize Alembic
 # alembic init alembic
@@ -49,7 +51,7 @@
 
 
 
-## Docker Alembic commands
+############## Docker + Alembic Commands #####################
 
 # Command to initialize Alembic
 # docker-compose run --rm fastapi alembic init alembic
@@ -76,7 +78,7 @@
 # docker-compose exec fastapi alembic upgrade head
 
 
-# Docker commands
+############## Docker Commands #####################
 
 # Command to build the Docker images
 # docker-compose build
@@ -103,3 +105,48 @@
 # Command to list all containers (including stopped ones)
 # docker ps -a
 
+# Command to view the logs of a specific container
+# docker logs <container_id>
+
+# Command to view the logs of a specific service
+# docker-compose logs <service_name>
+
+# Command to show running containers
+# docker ps
+
+
+
+############## Pytest Commands #####################
+
+# Command to run all tests
+# pytest
+
+# Command to run a specific test file
+# pytest tests/test_users.py
+
+# Command to run a specific test function
+# pytest tests/test_users.py::test_create_user_success
+
+# Command to show detailed test output
+# pytest -v
+
+# Command to show test output in real-time
+# pytest -s
+
+# Command to run tests with a specific marker
+# pytest -m "marker_name"
+
+# Command to generate a test report
+# pytest --html=report.html
+
+# Command to run tests with coverage
+# pytest --cov=app tests/
+
+# Command to disable warnings
+# pytest -p no:warnings
+
+# Command to stop pytest as soon as a failure occurs
+# pytest --maxfail=1
+
+# Command to run tests in a specific directory
+# pytest tests/
