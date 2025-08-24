@@ -23,7 +23,7 @@ app.add_middleware(
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "World testing incremental updates in render"}
+    return {"Hello": "World arsh"}
 
 
 # Include routers

@@ -46,3 +46,60 @@
 
 # alembic history
 
+
+
+
+## Docker Alembic commands
+
+# Command to initialize Alembic
+# docker-compose run --rm fastapi alembic init alembic
+
+# Command to create a new migration script (make migrations)
+# docker-compose run --rm fastapi alembic revision --autogenerate -m "Initial migration"
+
+# Command to apply migrations (migrate)
+# docker-compose run --rm fastapi alembic upgrade head
+
+# Command to downgrade migrations
+# docker-compose run --rm fastapi alembic downgrade -1
+
+# Command to show the current migration status
+# docker-compose run --rm fastapi alembic current
+
+# Command to show the migration history
+# docker-compose run --rm fastapi alembic history
+
+# Command to make migrations
+# docker-compose exec fastapi alembic revision --autogenerate -m "Initial migration"
+
+# Command to apply migrations (migrate)
+# docker-compose exec fastapi alembic upgrade head
+
+
+# Docker commands
+
+# Command to build the Docker images
+# docker-compose build
+
+# Command to start the Docker containers
+# docker-compose up -d
+# docker-compose -f docker-compose-dev.yml up -d
+# docker-compose -f docker-compose-prod.yml up -d
+
+# Command to stop the Docker containers
+# docker-compose down
+# docker-compose -f docker-compose-dev.yml down
+# docker-compose -f docker-compose-prod.yml down
+
+# Command to view the logs of a specific service
+# docker-compose logs <service_name>
+
+# Command to execute a command inside a running container
+# docker-compose exec <service_name> <command>
+
+# Command to list all running containers
+# docker ps
+
+# Command to list all containers (including stopped ones)
+# docker ps -a
+

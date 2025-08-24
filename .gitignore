@@ -29,3 +29,6 @@ migrations/
 htmlcov/
 .coverage
 .pytest_cache/
+
+selfunderstanding.txt
+deploy_guide.md
