@@ -13,3 +13,15 @@ Summary:
 This setup securely extracts and validates the user info from the JWT for each protected request.
 
 #################################################################################
+
+# How to login to pg admin
+
+Open http://localhost:5050 and log in with arsha@cybage.com + mltmorpltru
+Run: make up
+Open: http://localhost:5050 (username / password)
+Add server:
+    Host: postgres
+    Port: 5432
+    DB: instagram
+    User: instagram
+    Pass: password

@@ -2,11 +2,11 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from app.models import Base
-from app.config import settings
-
 from alembic import context
-
+import os
+import sys
+# from app.core.config import settings
+from services.user_service.app.core.config import settings
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -18,10 +18,14 @@ config.set_main_option('sqlalchemy.url', f'postgresql+psycopg2://{settings.datab
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
+# Add project root to sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Import Base and models
+from libs.db import Base
+from app.models import models  # noqa: F401
+
+# target_metadata points to your models' metadata
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,

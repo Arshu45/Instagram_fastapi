@@ -150,3 +150,7 @@
 
 # Command to run tests in a specific directory
 # pytest tests/
+
+
+# Command to enter user service container
+# docker compose -f infra/docker-compose.yml exec user_service bash

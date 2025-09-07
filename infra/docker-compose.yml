@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    env_file:
+      - ../.env
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    ports:
+      - "2181:2181"
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+
+  kafka:
+    image: bitnami/kafka:latest
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+
+  user_service:
+    build:
+      context: ../
+      dockerfile: services/user_service/Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - ../.env
+    ports:
+      - "${USER_SERVICE_PORT:-8000}:8000"
+    depends_on:
+      - postgres
+      - kafka
+      - redis
+
+  post_service:
+    build:
+      context: ../
+      dockerfile: services/post_service/Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+    env_file:
+      - ../.env
+    ports:
+      - "${POST_SERVICE_PORT:-8001}:8001"
+    depends_on:
+      - postgres
+      - kafka
+      - redis
+      - user_service
+
+  pgadmin:
+    image: dpage/pgadmin4:8
+    env_file:
+      - ../.env
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  redis_data:
