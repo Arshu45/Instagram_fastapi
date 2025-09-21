@@ -154,3 +154,78 @@
 
 # Command to enter user service container
 # docker compose -f infra/docker-compose.yml exec user_service bash
+
+
+################################ Docker Commands #####################
+
+# Build and Start All Services
+# make up || OR || docker compose -f infra/docker-compose.yml up --build -d
+
+# Check Service Status
+# make logs || OR || docker compose -f infra/docker-compose.yml logs -f
+
+# Uservice Shell Access and Alembic Commands
+
+# docker compose -f infra/docker-compose.yml exec user_service bash
+# cd /app
+# alembic revision --autogenerate -m "Description"
+# alembic upgrade head
+
+# # Postservice Shell Access and Alembic Commands
+
+# docker compose -f infra/docker-compose.yml exec post_service bash
+# cd /app
+# alembic revision --autogenerate -m "Description"
+# alembic upgrade head
+
+
+
+
+
+#####
+
+# # Create migration (User Service)
+# docker compose -f infra/docker-compose.yml exec user_service bash -c "cd /app && alembic revision --autogenerate -m 'Description'"
+
+# # Apply migration
+# docker compose -f infra/docker-compose.yml exec user_service bash -c "cd /app && alembic upgrade head"
+
+
+# # Create migration (POST SERVICE)
+# docker compose -f infra/docker-compose.yml exec post_service bash -c "cd /app && alembic revision --autogenerate -m 'Description'"
+
+# # Apply migration
+# docker compose -f infra/docker-compose.yml exec post_service bash -c "cd /app && alembic upgrade head"
+
+
+
+# Command to List Tables in a Database
+# docker compose -f infra/docker-compose.yml exec postgres psql -U instagram -d user_service_db -c "\dt"
+
+# Command to List All Databases
+# docker compose -f infra/docker-compose.yml exec postgres psql -U instagram -d postgres -c "\l"
+
+
+
+
+# Command to Stop and Remove All Containers, Networks, and Volumes
+# docker compose -f infra/docker-compose.yml down -v
+
+# Command to Remove All Stopped Containers
+# docker container prune -f
+
+# Command to Remove All Unused Docker Objects (Containers, Networks, Images, and Build Cache)
+# docker system prune -a -f --volumes
+
+
+# Command to Create Database
+# docker compose -f infra/docker-compose.yml exec postgres psql -U instagram -d instagram -c "CREATE DATABASE post_service_db;"
+
+# Command to Check Logs of a Specific Service (e.g., user_service)
+# docker compose -f infra/docker-compose.yml logs user_service --tail=30
+
+# Command to Check Logs of a Specific Service (e.g., post_service)
+# docker compose -f infra/docker-compose.yml logs post_service --tail=30
+
+# Command to Drop Database (User Service)
+# docker compose exec postgres psql -U instagram -d instagram -c "DROP DATABASE IF EXISTS user_service_db;"

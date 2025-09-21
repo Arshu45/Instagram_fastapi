@@ -5,8 +5,8 @@ WORKDIR /app
 COPY services/post_service/app/ ./app/
 COPY libs/ ./libs/
 COPY requirements.txt ./requirements.txt
-COPY alembic.ini ./alembic.ini
-COPY alembic/ ./alembic/
+COPY services/post_service/alembic.ini ./alembic.ini
+COPY services/post_service/alembic/ ./alembic/
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt

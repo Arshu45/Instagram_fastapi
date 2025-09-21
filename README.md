@@ -5,14 +5,14 @@ A **social media style application** built using **FastAPI** with **Postgres** +
 
 ---
 
-## ⚡ Features  
+## Features  
 - User authentication with JWT  
 - Database migrations with Alembic  
 - Dockerized development environment   
 
 ---
 
-## 🛠️ Local Development (with Docker)  
+## Local Development (with Docker)  
 
 ### **1. Clone the repository**
 ```bash
@@ -39,7 +39,7 @@ Use **pgAdmin** or **psql** with these credentials:
 * **Port:** `5433`
 * **Database:** `instagram_fastapi_db`
 * **Username:** `postgres`
-* **Password:** `mlt...ru`
+* **Password:** `ml....ru`
 
 ### **4. Verify the app**
 
@@ -187,3 +187,95 @@ docker compose down
 * YT Link : https://www.youtube.com/watch?v=0sOvCWFmrtA
 
 
+### MERMAID PREVIEW
+::: mermaid
+erDiagram
+    USER {
+        int id PK
+        string username
+        string email
+        string password
+        string full_name
+        string bio
+        datetime created_at
+    }
+
+    POST {
+        int id PK
+        int user_id FK
+        string caption
+        datetime created_at
+    }
+
+    COMMENT {
+        int id PK
+        int post_id FK
+        int user_id FK
+        string text
+        datetime created_at
+    }
+
+    LIKE {
+        int id PK
+        int user_id FK
+        int post_id FK
+        int comment_id FK
+        datetime created_at
+    }
+
+    FOLLOW {
+        int follower_id FK
+        int following_id FK
+        datetime created_at
+    }
+
+    MEDIA {
+        int id PK
+        int post_id FK
+        string url
+        string media_type
+        datetime created_at
+    }
+
+    NOTIFICATION {
+        int id PK
+        int user_id FK
+        string type
+        int reference_id
+        datetime created_at
+        boolean seen
+    }
+
+    AI_MODERATION {
+        int id PK
+        int post_id FK
+        int comment_id FK
+        string status
+        string reason
+        datetime created_at
+    }
+
+    VECTOR_EMBEDDING {
+        int id PK
+        string entity_type
+        int entity_id
+        string embedding_vector
+    }
+
+    USER ||--o{ POST : creates
+    USER ||--o{ COMMENT : writes
+    USER ||--o{ LIKE : does
+    USER ||--o{ FOLLOW : follows
+    USER ||--o{ NOTIFICATION : receives
+
+    POST ||--o{ COMMENT : has
+    POST ||--o{ LIKE : receives
+    POST ||--o{ MEDIA : contains
+    POST ||--o{ AI_MODERATION : checked_by
+
+    COMMENT ||--o{ LIKE : receives
+    COMMENT ||--o{ AI_MODERATION : checked_by
+
+    POST ||--o{ VECTOR_EMBEDDING : represented_by
+    USER ||--o{ VECTOR_EMBEDDING : represented_by
+:::
